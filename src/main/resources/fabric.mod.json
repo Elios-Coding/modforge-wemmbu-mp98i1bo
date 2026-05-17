@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "wemmbu",
+  "version": "${version}",
+  "name": "Wemmbu",
+  "description": "Client-side Secret Menu opened with '*' that toggles an X-ray mode making non-ore blocks invisible while keeping ores visible.",
+  "authors": [
+    "Wemmbu"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/wemmbu/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.modforge.wemmbu.WemmbuMod"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.4",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "mixins": [
+    "wemmbu.mixins.json"
+  ]
+}

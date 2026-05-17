@@ -1,0 +1,13 @@
+{
+  "required": false,
+  "package": "com.modforge.wemmbu.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [],
+  "client": [
+    "WemmbuModMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 0
+  },
+  "minVersion": "0.8"
+}
