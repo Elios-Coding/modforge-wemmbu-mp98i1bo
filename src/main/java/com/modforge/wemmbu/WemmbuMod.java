@@ -24,6 +24,7 @@ public class WemmbuMod implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         try {
+            // KeyBinding's last parameter is a CATEGORY TRANSLATION KEY (String), not a Category enum.
             OPEN_MENU_KEY = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "key.wemmbu.open_menu",
                 InputUtil.Type.KEYSYM,
@@ -57,10 +58,13 @@ class WemmbuModScreen extends Screen {
     @Override
     protected void init() {
         this.addDrawableChild(ButtonWidget.builder(Text.literal("XRAY"), btn -> {
-            WemmbuMod.XRAY_ENABLED = !WemmbuMod.XRAY_ENABLED;
-            btn.setMessage(Text.literal(WemmbuMod.XRAY_ENABLED ? "XRAY: ON" : "XRAY"));
-            MinecraftClient mc = MinecraftClient.getInstance();
-            if (mc.worldRenderer != null) mc.worldRenderer.reload();
+            try {
+                WemmbuMod.XRAY_ENABLED = !WemmbuMod.XRAY_ENABLED;
+                btn.setMessage(Text.literal(WemmbuMod.XRAY_ENABLED ? "XRAY: ON" : "XRAY"));
+                MinecraftClient mc = MinecraftClient.getInstance();
+                if (mc.worldRenderer != null) mc.worldRenderer.reload();
+            } catch (Throwable ignored) {
+            }
         }).dimensions(8, 8, 60, 20).build());
     }
 
