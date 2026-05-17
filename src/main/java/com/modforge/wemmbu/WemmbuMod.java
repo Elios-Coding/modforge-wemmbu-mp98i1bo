@@ -24,12 +24,12 @@ public class WemmbuMod implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         try {
-            // KeyBinding's last parameter is a CATEGORY TRANSLATION KEY (String), not a Category enum.
+            // Use Fabric keybinding API signature: (translationKey, InputUtil.Type, keyCode, categoryTranslationKey)
             OPEN_MENU_KEY = KeyBindingHelper.registerKeyBinding(new KeyBinding(
-                "key.wemmbu.open_menu",
-                InputUtil.Type.KEYSYM,
-                GLFW.GLFW_KEY_KP_MULTIPLY,
-                "category.wemmbu.general"
+                    "key.wemmbu.open_menu",
+                    InputUtil.Type.KEYSYM,
+                    GLFW.GLFW_KEY_KP_MULTIPLY,
+                    Text.translatable("category.wemmbu.general")
             ));
 
             ClientTickEvents.END_CLIENT_TICK.register(client -> {
@@ -73,7 +73,7 @@ class WemmbuModScreen extends Screen {
         this.renderBackground(ctx, mouseX, mouseY, delta);
         super.render(ctx, mouseX, mouseY, delta);
         ctx.drawTextWithShadow(this.textRenderer, this.title,
-            this.width / 2 - this.textRenderer.getWidth(this.title) / 2, 30, 0xFFFFFF);
+                this.width / 2 - this.textRenderer.getWidth(this.title) / 2, 30, 0xFFFFFF);
     }
 
     @Override
